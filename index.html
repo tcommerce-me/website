@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tcommerce.me | The First-Ever Commerce Engine for 900M+ Telegram Users</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        telegram: {
+                            light: '#0088cc',
+                            DEFAULT: '#0088cc',
+                            dark: '#006699',
+                        },
+                        accent: {
+                            green: '#25D366',
+                            purple: '#833AB4',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .telegram-mockup {
+            background: linear-gradient(135deg, #0088cc 0%, #006699 100%);
+            border-radius: 12px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .shop-item {
+            transition: all 0.3s ease;
+        }
+        .shop-item:hover {
+            transform: translateY(-5px);
+        }
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: scale(1.02);
+        }
+        .pricing-card {
+            transition: all 0.3s ease;
+        }
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+        .addon-card {
+            transition: all 0.3s ease;
+        }
+        .addon-card:hover {
+            transform: scale(1.03);
+        }
+        .telegram-bubble {
+            position: relative;
+            background: #182533;
+            border-radius: 8px;
+            padding: 12px 16px;
+            color: white;
+            max-width: 80%;
+        }
+        .telegram-bubble:after {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 12px;
+            width: 0;
+            height: 0;
+            border: 8px solid transparent;
+            border-right-color: #182533;
+            border-left: 0;
+        }
+        .blur-content {
+            filter: blur(5px);
+            position: relative;
+        }
+        .blur-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white font-sans">
+    <!-- Navigation -->
+    <nav class="bg-gray-800 py-4 px-6 sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fab fa-telegram text-3xl text-telegram"></i>
+                <span class="text-2xl font-bold">tcommerce.me</span>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#features" class="hover:text-telegram transition">Features</a>
+                <a href="#pricing" class="hover:text-telegram transition">Pricing</a>
+                <a href="#proof" class="hover:text-telegram transition">Proof</a>
+                <a href="#why" class="hover:text-telegram transition">Why Us</a>
+            </div>
+            <a href="#cta" class="bg-telegram hover:bg-telegram-dark px-6 py-2 rounded-full font-bold transition">Get Started</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-16 px-6">
+        <div class="container mx-auto flex flex-col lg:flex-row items-center">
+            <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                    <span class="text-telegram">Monetize Telegram.</span> <br>
+                    <span class="text-accent-green">Unlock Dollars.</span> <br>
+                    <span class="text-white">Zero Effort.</span>
+                </h1>
+                <p class="text-xl text-gray-300 mb-8">
+                    Turn your Telegram channel into a revenue powerhouse with shops, subscriptions, and one-click paylinks. All inside Telegram. All automated.
+                </p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#cta" class="bg-telegram hover:bg-telegram-dark text-white px-8 py-4 rounded-full font-bold text-lg text-center transition">
+                         🔥 Launch Your Shop in 60 Seconds
+                    </a>
+                    <a href="#features" class="border-2 border-telegram text-telegram hover:bg-telegram hover:text-white px-8 py-4 rounded-full font-bold text-lg text-center transition">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+            <div class="lg:w-1/2 telegram-mockup p-4 relative">
+                <div class="bg-gray-800 rounded-lg overflow-hidden">
+                    <!-- Telegram channel header -->
+                    <div class="bg-gray-700 p-4 flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-telegram flex items-center justify-center text-white">
+                            <i class="fab fa-telegram text-xl"></i>
+                        </div>
+                        <div class="ml-3">
+                            <div class="font-bold">Premium Channel</div>
+                            <div class="text-xs text-gray-400">2,137 subscribers</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Channel content with blurred premium content -->
+                    <div class="p-4">
+                        <div class="mb-4">
+                            <div class="text-sm text-gray-400 mb-1">Today, 10:42 AM</div>
+                            <div class="bg-gray-700 p-3 rounded-lg">
+                                <p>Here's your exclusive content for subscribers only!</p>
+                            </div>
+                        </div>
+                        
+                        <div class="blur-content mb-4 relative">
+                            <div class="text-sm text-gray-400 mb-1">Today, 10:45 AM</div>
+                            <div class="bg-gray-700 p-3 rounded-lg h-32">
+                                <p>This premium tutorial will show you exactly how to...</p>
+                            </div>
+                            <div class="blur-overlay">
+                                <div class="text-center">
+                                    <div class="text-xl mb-2">Premium Content</div>
+                                    <button class="bg-telegram hover:bg-telegram-dark px-4 py-2 rounded-full font-bold">
+                                        Subscribe $9.99/mo
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Shop grid -->
+                        <div class="mt-8">
+                            <div class="text-center text-xl font-bold mb-4">The Shopify of Telegram</div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="shop-item bg-gray-700 p-3 rounded-lg text-center">
+                                    <div class="text-3xl mb-2">🍔</div>
+                                    <div class="font-bold">Burger</div>
+                                    <div class="text-telegram">$5.99</div>
+                                </div>
+                                <div class="shop-item bg-gray-700 p-3 rounded-lg text-center">
+                                    <div class="text-3xl mb-2">👕</div>
+                                    <div class="font-bold">T-Shirt</div>
+                                    <div class="text-telegram">$19.99</div>
+                                </div>
+                                <div class="shop-item bg-gray-700 p-3 rounded-lg text-center">
+                                    <div class="text-3xl mb-2">📕</div>
+                                    <div class="font-bold">eBook</div>
+                                    <div class="text-telegram">$9.99</div>
+                                </div>
+                                <div class="shop-item bg-gray-700 p-3 rounded-lg text-center">
+                                    <div class="text-3xl mb-2">🎓</div>
+                                    <div class="font-bold">Course</div>
+                                    <div class="text-telegram">$49.99</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why This Matters -->
+    <section class="py-16 px-6 bg-gray-800">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-6">Your Users Live on Telegram. Why Send Them Elsewhere to Pay?</h2>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-12">
+                Stop bleeding revenue to Patreon, Gumroad, and Shopify. Your audience is already in Telegram. Keep them there. Keep the money too.
+            </p>
+            <div class="flex justify-center">
+                <div class="inline-flex flex-wrap justify-center gap-4 max-w-2xl">
+                    <div class="bg-gray-700 px-4 py-2 rounded-full flex items-center">
+                        <i class="fab fa-patreon text-red-500 mr-2"></i>
+                        <span>Patreon</span>
+                    </div>
+                    <div class="bg-gray-700 px-4 py-2 rounded-full flex items-center">
+                        <i class="fas fa-shopping-cart text-green-500 mr-2"></i>
+                        <span>Shopify</span>
+                    </div>
+                    <div class="bg-gray-700 px-4 py-2 rounded-full flex items-center">
+                        <i class="fas fa-book text-yellow-500 mr-2"></i>
+                        <span>Gumroad</span>
+                    </div>
+                    <div class="bg-gray-700 px-4 py-2 rounded-full flex items-center">
+                        <i class="fas fa-ticket-alt text-blue-500 mr-2"></i>
+                        <span>Eventbrite</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="py-16 px-6">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-16">Telegram-Native Features</h2>
+            
+            <div class="grid md:grid-cols-2 gap-12 mb-16">
+                <!-- Feature 1 -->
+                <div class="feature-card bg-gray-800 p-8 rounded-xl">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-telegram p-3 rounded-full mr-4">
+                            <i class="fas fa-gem text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold">Subscriptions / Paywalls</h3>
+                    </div>
+                    <p class="text-gray-300 mb-6">
+                        Predictable monthly revenue. Auto-add subscribers. Auto-remove freeloaders.
+                    </p>
+                    <div class="telegram-mockup p-3 rounded-lg">
+                        <div class="bg-gray-700 rounded-lg overflow-hidden">
+                            <div class="p-4 flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-telegram flex items-center justify-center text-white">
+                                    <i class="fab fa-telegram text-xl"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <div class="font-bold">Premium Channel</div>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <div class="blur-content mb-4 relative h-32">
+                                    <p class="p-3">This premium content is only available to subscribers...</p>
+                                    <div class="blur-overlay">
+                                        <div class="text-center">
+                                            <button class="bg-telegram hover:bg-telegram-dark px-4 py-2 rounded-full font-bold">
+                                                Subscribe $9.99/mo
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card bg-gray-800 p-8 rounded-xl">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-accent-purple p-3 rounded-full mr-4">
+                            <i class="fas fa-link text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold">One-Off Paylinks</h3>
+                    </div>
+                    <p class="text-gray-300 mb-6">
+                        Sell anything instantly — ebooks, tickets, webinars, coaching, files.
+                    </p>
+                    <div class="telegram-mockup p-3 rounded-lg">
+                        <div class="bg-gray-700 rounded-lg overflow-hidden">
+                            <div class="p-4">
+                                <div class="flex mb-4">
+                                    <div class="w-10 h-10 rounded-full bg-gray-600 flex items-center justify-center text-white">
+                                        <i class="fas fa-shopping-bag"></i>
+                                    </div>
+                                    <div class="ml-3 bg-gray-600 p-3 rounded-lg">
+                                        <div class="font-bold">Premium eBook</div>
+                                        <div class="text-sm">The Complete Guide to Telegram Monetization</div>
+                                        <button class="bg-telegram hover:bg-telegram-dark px-3 py-1 rounded-full font-bold text-sm mt-2">
+                                            Buy Now $29
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card bg-gray-800 p-8 rounded-xl">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-accent-green p-3 rounded-full mr-4">
+                            <i class="fas fa-store text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold">Shops Inside Telegram</h3>
+                    </div>
+                    <p class="text-gray-300 mb-6">
+                        Your storefront, built natively. Sell multiple products, services, or bundles.
+                    </p>
+                    <div class="telegram-mockup p-3 rounded-lg">
+                        <div class="bg-gray-700 rounded-lg overflow-hidden">
+                            <div class="p-4">
+                                <div class="text-center font-bold mb-3">My Telegram Shop</div>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div class="bg-gray-600 p-2 rounded-lg text-center">
+                                        <div class="text-2xl mb-1">🍔</div>
+                                        <div class="text-sm font-bold">Burger</div>
+                                        <div class="text-xs text-telegram">$5.99</div>
+                                    </div>
+                                    <div class="bg-gray-600 p-2 rounded-lg text-center">
+                                        <div class="text-2xl mb-1">👕</div>
+                                        <div class="text-sm font-bold">T-Shirt</div>
+                                        <div class="text-xs text-telegram">$19.99</div>
+                                    </div>
+                                    <div class="bg-gray-600 p-2 rounded-lg text-center">
+                                        <div class="text-2xl mb-1">📕</div>
+                                        <div class="text-sm font-bold">eBook</div>
+                                        <div class="text-xs text-telegram">$9.99</div>
+                                    </div>
+                                    <div class="bg-gray-600 p-2 rounded-lg text-center">
+                                        <div class="text-2xl mb-1">🎓</div>
+                                        <div class="text-sm font-bold">Course</div>
+                                        <div class="text-xs text-telegram">$49.99</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="feature-card bg-gray-800 p-8 rounded-xl">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-yellow-500 p-3 rounded-full mr-4">
+                            <i class="fas fa-globe text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold">Branded Shopfront</h3>
+                    </div>
+                    <p class="text-gray-300 mb-6">
+                        Your own branded shop page: tcommerce.me/shopname. Professional. Shareable.
+                    </p>
+                    <div class="telegram-mockup p-3 rounded-lg">
+                        <div class="bg-gray-700 rounded-lg overflow-hidden">
+                            <div class="p-4 text-center">
+                                <div class="w-16 h-16 rounded-full bg-telegram mx-auto mb-3 flex items-center justify-center text-white">
+                                    <i class="fas fa-store text-2xl"></i>
+                                </div>
+                                <div class="font-bold mb-2">My Awesome Shop</div>
+                                <div class="text-sm text-gray-400 mb-4">tcommerce.me/myshop</div>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <div class="bg-gray-600 p-2 rounded">
+                                        <div class="text-xl mb-1">📕</div>
+                                        <div class="text-xs">eBook</div>
+                                    </div>
+                                    <div class="bg-gray-600 p-2 rounded">
+                                        <div class="text-xl mb-1">🎓</div>
+                                        <div class="text-xs">Course</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="py-16 px-6 bg-gray-800">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-6">Simple, Scalable, Fair Pricing</h2>
+            <p class="text-xl text-gray-300 text-center mb-12 max-w-2xl mx-auto">
+                Pay only for what you need. Upgrade anytime as your business grows.
+            </p>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <!-- Pricing Card 1 -->
+                <div class="pricing-card bg-gray-900 p-8 rounded-xl border border-gray-700">
+                    <h3 class="text-2xl font-bold mb-4">Starter</h3>
+                    <div class="text-4xl font-bold mb-4">$49<span class="text-lg text-gray-400">/mo</span></div>
+                    <div class="text-gray-400 mb-6">up to 200 subscribers</div>
+                    <p class="text-sm text-gray-500 mb-4">Perfect for small private channels & early creators</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-telegram mr-2"></i>
+                            <span>Basic shop features</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-telegram mr-2"></i>
+                            <span>Subscription management</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-telegram mr-2"></i>
+                            <span>Basic analytics</span>
+                        </li>
+                    </ul>
+                    <a href="#cta" class="block text-center bg-gray-700 hover:bg-telegram text-white py-3 rounded-lg font-bold transition">
+                        Get Started
+                    </a>
+                </div>
+                
+                <!-- Pricing Card 2 (Popular) -->
+                <div class="pricing-card bg-gray-900 p-8 rounded-xl border-2 border-telegram relative">
+                    <div class="absolute top-0 right-0 bg-telegram text-white px-4 py-1 rounded-bl-lg rounded-tr-lg font-bold text-sm">
+                        Most Popular
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Growth</h3>
+                    <div class="text-4xl font-bold mb-4">$99<span class="text-lg text-gray-400">/mo</span></div>
+                    <div class="text-gray-400 mb-6">up to 500 subscribers</div>
+                    <p class="text-sm text-gray-500 mb-4">For serious creators building predictable income</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-telegram mr-2"></i>
+                            <span>Everything in Starter</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-telegram mr-2"></i>
+                            <span>Advanced analytics</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-telegram mr-2"></i>
+                            <span>Custom paylinks</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-telegram mr-2"></i>
+                            <span>Priority support</span>
+                        </li>
+                    </ul>
+                    <a href="#cta" class="block text-center bg-telegram hover:bg-telegram-dark text-white py-3 rounded-lg font-bold transition">
+                        Get Started
+                    </a>
+                </div>
+                
+                <!-- Pricing Card 3 -->
+                <div class="pricing-card bg-gray-900 p-8 rounded-xl border border-gray-700">
+                    <h3 class="text-2xl font-bold mb-4">Pro</h3>
+                    <div class="text-4xl font-bold mb-4">$199<span class="text-lg text-gray-400">/mo</span></div>
+                    <div class="text-gray-400 mb-6">up to 1,500 subscribers</div>
+                    <p class="text-sm text-gray-500 mb-4">Great for mid-sized communities & growing shops</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-telegram mr-2"></i>
+                            <span>Everything in Growth</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-telegram mr-2"></i>
+                            <span>Branded shopfront</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-telegram mr-2"></i>
+                            <span>API access</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-telegram mr-2"></i>
+                            <span>Dedicated account manager</span>
+                        </li>
+                    </ul>
+                    <a href="#cta" class="block text-center bg-gray-700 hover:bg-telegram text-white py-3 rounded-lg font-bold transition">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Enterprise Pricing -->
+            <div class="text-center">
+                <h3 class="text-2xl font-bold mb-4">Need more? We've got you covered.</h3>
+                <div class="flex flex-wrap justify-center gap-4 mb-8">
+                    <div class="bg-gray-700 px-6 py-3 rounded-lg">
+                        <div class="font-bold">$299/mo</div>
+                        <div class="text-sm text-gray-400">Scale: up to 2,000</div>
+                        <div class="text-xs text-gray-500">For admins turning Telegram into a business</div>
+                    </div>
+                    <div class="bg-gray-700 px-6 py-3 rounded-lg">
+                        <div class="font-bold">$399/mo</div>
+                        <div class="text-sm text-gray-400">Advanced: up to 5,000</div>
+                        <div class="text-xs text-gray-500">Large-scale paid channels & digital shops</div>
+                    </div>
+                    <div class="bg-gray-700 px-6 py-3 rounded-lg">
+                        <div class="font-bold">$999/mo</div>
+                        <div class="text-sm text-gray-400">Enterprise: up to 20,000</div>
+                        <div class="text-xs text-gray-500">Mega communities, big brands & high-volume</div>
+                    </div>
+                </div>
+                <div class="text-sm text-gray-400 mb-4">
+                    All payments go to your Stripe account. No revenue share. No hidden fees.
+                </div>
+                <a href="#cta" class="inline-block border-2 border-telegram text-telegram hover:bg-telegram hover:text-white px-8 py-3 rounded-full font-bold transition">
+                    Contact Us for Enterprise Plans
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add-Ons -->
+    <section class="py-16 px-6">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-6">Grow Faster With Add-Ons</h2>
+            <p class="text-xl text-gray-300 text-center mb-12 max-w-2xl mx-auto">
+                Supercharge your Telegram business with these powerful extras.
+            </p>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Add-On 1 -->
+                <div class="addon-card bg-gray-800 p-6 rounded-xl">
+                    <div class="text-4xl mb-4 text-center">🛍</div>
+                    <h3 class="text-xl font-bold mb-3 text-center">Branded Shopfront</h3>
+                    <p class="text-gray-400 mb-4 text-center">
+                        Your own branded shop page: tcommerce.me/shopname. Professional. Shareable.
+                    </p>
+                    <div class="telegram-mockup p-3 rounded-lg mb-4">
+                        <div class="bg-gray-700 rounded-lg overflow-hidden">
+                            <div class="p-4 text-center">
+                                <div class="w-12 h-12 rounded-full bg-telegram mx-auto mb-2 flex items-center justify-center text-white">
+                                    <i class="fas fa-store"></i>
+                                </div>
+                                <div class="font-bold text-sm mb-1">My Shop</div>
+                                <div class="text-xs text-gray-400 mb-2">tcommerce.me/myshop</div>
+                                <div class="grid grid-cols-2 gap-1">
+                                    <div class="bg-gray-600 p-1 rounded text-xs">
+                                        <div>📕 eBook</div>
+                                    </div>
+                                    <div class="bg-gray-600 p-1 rounded text-xs">
+                                        <div>🎓 Course</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center font-bold text-telegram">$29/mo</div>
+                    <div class="text-xs text-center text-gray-500 mt-1">Your own branded shop page</div>
+                </div>
+                
+                <!-- Add-On 2 -->
+                <div class="addon-card bg-gray-800 p-6 rounded-xl">
+                    <div class="text-4xl mb-4 text-center">⏳</div>
+                    <h3 class="text-xl font-bold mb-3 text-center">Expiring Paylinks</h3>
+                    <p class="text-gray-400 mb-4 text-center">
+                        Create limited-time offers with expiring paylinks. Perfect for flash sales.
+                    </p>
+                    <div class="telegram-mockup p-3 rounded-lg mb-4">
+                        <div class="bg-gray-700 rounded-lg overflow-hidden">
+                            <div class="p-4">
+                                <div class="flex">
+                                    <div class="w-10 h-10 rounded-full bg-gray-600 flex items-center justify-center text-white">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <div class="ml-3 bg-gray-600 p-2 rounded-lg">
+                                        <div class="font-bold text-sm">FLASH SALE!</div>
+                                        <div class="text-xs">Expires in 2:34:12</div>
+                                        <button class="bg-red-500 hover:bg-red-600 px-2 py-1 rounded-full font-bold text-xs mt-1">
+                                            Buy Now $19.99
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center font-bold text-telegram">$29/link</div>
+                    <div class="text-xs text-center text-gray-500 mt-1">Perfect for limited-time offers</div>
+                </div>
+                
+                <!-- Add-On 3 -->
+                <div class="addon-card bg-gray-800 p-6 rounded-xl">
+                    <div class="text-4xl mb-4 text-center">🌐</div>
+                    <h3 class="text-xl font-bold mb-3 text-center">Custom Domain</h3>
+                    <p class="text-gray-400 mb-4 text-center">
+                        Your own domain for your shop (yourbrand.com/shop). Maximum credibility.
+                    </p>
+                    <div class="telegram-mockup p-3 rounded-lg mb-4">
+                        <div class="bg-gray-700 rounded-lg overflow-hidden">
+                            <div class="p-4 text-center">
+                                <div class="w-12 h-12 rounded-full bg-telegram mx-auto mb-2 flex items-center justify-center text-white">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                                <div class="font-bold text-sm mb-1">My Brand</div>
+                                <div class="text-xs text-gray-400 mb-2">shop.mybrand.com</div>
+                                <div class="grid grid-cols-2 gap-1">
+                                    <div class="bg-gray-600 p-1 rounded text-xs">
+                                        <div>👕 T-Shirt</div>
+                                    </div>
+                                    <div class="bg-gray-600 p-1 rounded text-xs">
+                                        <div>📘 Guide</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center font-bold text-telegram">$49/mo</div>
+                    <div class="text-xs text-center text-gray-500 mt-1">Use your own domain</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proof Section -->
+    <section id="proof" class="py-16 px-6 bg-gray-800">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-6">Admins Are Already Making Six-Figures. Be Next.</h2>
+            
+            <div class="max-w-2xl mx-auto">
+                <div class="telegram-bubble mb-4">
+                    <div class="flex items-center mb-2">
+                        <div class="w-8 h-8 rounded-full bg-telegram flex items-center justify-center text-white mr-2">
+                            <i class="fab fa-telegram"></i>
+                        </div>
+                        <div class="font-bold">tcommerce.me Bot</div>
+                    </div>
+                    <div class="text-sm">
+                        Your channel analytics for May 2023:
+                    </div>
+                </div>
+                
+                <div class="telegram-bubble ml-8 mb-4">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <div class="text-xs text-gray-400">Subscribers</div>
+                            <div class="text-2xl font-bold">2,137</div>
+                        </div>
+                        <div>
+                            <div class="text-xs text-gray-400">Revenue</div>
+                            <div class="text-2xl font-bold text-accent-green">$12,480</div>
+                        </div>
+                        <div>
+                            <div class="text-xs text-gray-400">Growth</div>
+                            <div class="text-2xl font-bold text-telegram">+27% MoM</div>
+                        </div>
+                        <div>
+                            <div class="text-xs text-gray-400">Conversion</div>
+                            <div class="text-2xl font-bold">8.4%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="telegram-bubble">
+                    <div class="text-sm">
+                        With tcommerce.me, every admin can turn their channel into a serious business.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why tcommerce.me Wins -->
+    <section id="why" class="py-16 px-6">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12">Why tcommerce.me Wins</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Reason 1 -->
+                <div class="bg-gray-800 p-6 rounded-xl text-center">
+                    <div class="text-4xl mb-4">🚀</div>
+                    <h3 class="text-xl font-bold mb-3">First-Mover Advantage</h3>
+                    <p class="text-gray-400">
+                        The ONLY commerce platform built 100% for Telegram.
+                    </p>
+                </div>
+                
+                <!-- Reason 2 -->
+                <div class="bg-gray-800 p-6 rounded-xl text-center">
+                    <div class="text-4xl mb-4">💳</div>
+                    <h3 class="text-xl font-bold mb-3">Stripe-Powered</h3>
+                    <p class="text-gray-400">
+                        Secure, global, direct payouts.
+                    </p>
+                </div>
+                
+                <!-- Reason 3 -->
+                <div class="bg-gray-800 p-6 rounded-xl text-center">
+                    <div class="text-4xl mb-4">📊</div>
+                    <h3 class="text-xl font-bold mb-3">Analytics Where You Work</h3>
+                    <p class="text-gray-400">
+                        Stats and insights delivered straight into Telegram.
+                    </p>
+                </div>
+                
+                <!-- Reason 4 -->
+                <div class="bg-gray-800 p-6 rounded-xl text-center">
+                    <div class="text-4xl mb-4">🔄</div>
+                    <h3 class="text-xl font-bold mb-3">All-in-One</h3>
+                    <p class="text-gray-400">
+                        Subscriptions, one-offs, and shops. No juggling tools.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section id="cta" class="py-16 px-6 bg-telegram">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-6">Be Among the First 500 Shops. This Is Day Zero.</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">
+                Your audience is waiting. Your revenue is waiting. The only question: are you ready?
+            </p>
+            
+            <div class="flex justify-center mb-12">
+                <div class="telegram-mockup p-4 max-w-xs">
+                    <div class="bg-gray-800 rounded-lg overflow-hidden">
+                        <div class="p-4">
+                            <div class="flex items-center mb-4">
+                                <div class="w-10 h-10 rounded-full bg-telegram flex items-center justify-center text-white">
+                                    <i class="fas fa-shopping-bag"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <div class="font-bold">Premium Course</div>
+                                    <div class="text-sm text-gray-400">Telegram Monetization Mastery</div>
+                                </div>
+                            </div>
+                            <div class="text-center mb-4">
+                                <div class="text-2xl font-bold">$97</div>
+                            </div>
+                            <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-lg font-bold transition">
+                                Pay with Stripe
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="#" class="inline-block bg-white hover:bg-gray-100 text-telegram px-12 py-4 rounded-full font-bold text-xl transition mb-4">
+                👉 Start Now — Launch in 60 Seconds
+            </a>
+            <div class="text-sm opacity-80">No credit card required to start</div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 bg-gray-900">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-2 mb-6 md:mb-0">
+                    <i class="fab fa-telegram text-3xl text-telegram"></i>
+                    <span class="text-2xl font-bold">tcommerce.me</span>
+                </div>
+                <div class="flex space-x-6 mb-6 md:mb-0">
+                    <a href="#" class="hover:text-telegram transition">
+                        <i class="fab fa-telegram text-xl"></i>
+                    </a>
+                    <a href="#" class="hover:text-telegram transition">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="hover:text-telegram transition">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                </div>
+                <div class="text-gray-400 text-sm">
+                    © 2025 tcommerce.me. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
